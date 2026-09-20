@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root, :root[data-theme="light"] {
+    --c-surface: #f8fafc;
+    --c-card: #ffffff;
+    --c-border: #e2e8f0;
+    --c-text-main: #0f172a;
+    --c-text-muted: #475569;
+    
+    /* Inverted slate scale for light mode */
+    --c-slate-900: #f8fafc;
+    --c-slate-800: #ffffff;
+    --c-slate-700: #e2e8f0;
+    --c-slate-600: #cbd5e1;
+    --c-slate-500: #94a3b8;
+    --c-slate-400: #64748b;
+    --c-slate-300: #475569;
+    --c-slate-200: #334155;
+    --c-slate-100: #1e293b;
+    --c-slate-50: #0f172a;
+  }
+
+  :root[data-theme="dark"] {
+    --c-surface: #0f172a;
+    --c-card: #1e293b;
+    --c-border: #334155;
+    --c-text-main: #f1f5f9;
+    --c-text-muted: #94a3b8;
+    
+    /* Standard slate scale for dark mode */
+    --c-slate-900: #0f172a;
+    --c-slate-800: #1e293b;
+    --c-slate-700: #334155;
+    --c-slate-600: #475569;
+    --c-slate-500: #64748b;
+    --c-slate-400: #94a3b8;
+    --c-slate-300: #cbd5e1;
+    --c-slate-200: #e2e8f0;
+    --c-slate-100: #f1f5f9;
+    --c-slate-50: #f8fafc;
+  }
+
+  body {
+    background-color: var(--c-surface);
+    color: var(--c-text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: var(--c-card); }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: var(--c-slate-400); border-radius: 3px; }
