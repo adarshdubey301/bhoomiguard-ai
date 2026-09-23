@@ -106,17 +106,7 @@ async def lifespan(app: FastAPI):
     logger.info("BhoomiGuard AI — Shutting down")
 
 
-app = FastAPI(
-    title="BhoomiGuard AI API",
-    description=(
-        "Predictive Analytics System for Early Detection of Land Acquisition Delays. "
-        "SIH Problem ID: SIH26017 | Ministry of Rural Development"
-    ),
-    version=settings.APP_VERSION,
-    lifespan=lifespan,
-    docs_url="/api/docs",
-    redoc_url="/api/redoc",
-)
+app = FastAPI(title="BhoomiGuard AI API")
 
 # CORS
 app.add_middleware(
@@ -136,21 +126,15 @@ app.include_router(analytics.router)
 app.include_router(metadata.router)
 
 
-@app.get("/", tags=["Health"])
+@app.get("/")
 def root():
-    return {
-        "app": "BhoomiGuard AI",
-        "version": settings.APP_VERSION,
-        "status": "running",
-        "docs": "/api/docs",
-    }
+    return {"message": "BhoomiGuard AI Backend is Running"}
 
 
-@app.get("/api/health", tags=["Health"])
+@app.get("/health")
 def health():
     from app.services.ml_service import is_model_ready
     return {
-        "status": "healthy",
-        "model_ready": is_model_ready(),
-        "version": settings.APP_VERSION,
+        "status": "ok",
+        "service": "BhoomiGuard AI"
     }
