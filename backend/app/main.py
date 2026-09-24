@@ -111,7 +111,9 @@ app = FastAPI(title="BhoomiGuard AI API")
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.allowed_origins_list,
+    allow_origins=[
+        "https://bhoomiguard-ai-1.onrender.com"
+        ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
